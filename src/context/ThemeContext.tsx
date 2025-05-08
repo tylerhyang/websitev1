@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useMemo, type ReactNode } from 'react';
+import { createContext, useContext, useState, useMemo, type ReactNode, useEffect } from 'react';
 import { ThemeProvider as MUIThemeProvider, createTheme } from '@mui/material';
 
 type ThemeContextType = {
@@ -21,7 +21,11 @@ type ThemeProviderProps = {
 };
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // Initialize state from localStorage or default to false
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme === 'dark';
+  });
 
   const theme = useMemo(
     () =>
@@ -34,7 +38,11 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   );
 
   const toggleTheme = () => {
-    setIsDarkMode((prev) => !prev);
+    setIsDarkMode((prev) => {
+      const newTheme = !prev;
+      localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+      return newTheme;
+    });
   };
 
   return (
