@@ -32,9 +32,12 @@ const ImageCarousel: FC<ImageCarouselProps> = ({ images }) => {
           onClick={handlePrevious}
           sx={{
             backgroundColor: 'background.paper',
-            '&:hover': {
-              backgroundColor: 'action.hover',
+            '&:focus': {
+              outline: 'none',
             },
+            '&:hover': {
+              backgroundColor: 'action.hover'
+            }
           }}
         >
           <ChevronLeft />
@@ -99,9 +102,12 @@ const ImageCarousel: FC<ImageCarouselProps> = ({ images }) => {
           onClick={handleNext}
           sx={{
             backgroundColor: 'background.paper',
-            '&:hover': {
-              backgroundColor: 'action.hover',
+            '&:focus': {
+              outline: 'none',
             },
+            '&:hover': {
+              backgroundColor: 'action.hover'
+            }
           }}
         >
           <ChevronRight />

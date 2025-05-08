@@ -3,7 +3,6 @@ import { GitHub, LinkedIn, Instagram, Email } from '@mui/icons-material';
 import TypingText from '../components/sections/TypingText';
 import type { FC } from 'react';
 
-// Define the floating animation
 const floatUp = keyframes`
   from {
     opacity: 0;

@@ -1,4 +1,4 @@
-import { Box, Typography, Container, Stack, Paper, keyframes } from '@mui/material';
+import { Box, Typography, Stack, Paper, keyframes } from '@mui/material';
 import ImageCarousel from '../components/sections/ImageCarousel';
 import Timeline from '../components/sections/Timeline';
 import type { FC } from 'react';
@@ -18,6 +18,7 @@ type TimelineItem = {
   year: string;
   title: string;
   description: string;
+  company: string;
 };
 
 const About: FC = () => {
@@ -32,26 +33,41 @@ const About: FC = () => {
 
   const timelineItems: TimelineItem[] = [
     {
-      year: '2023',
-      title: 'Software Engineer',
-      description: 'Working on exciting projects...'
+      year: '2025 - Present',
+      company: 'Georgia Institute of Technology',
+      title: 'M.S. Computer Science',
+      description: 'Concentration: Computing Systems'
     },
     {
-      year: '2023',
+      year: '2025 - Present',
+      company: 'Glean',
       title: 'Software Engineer',
-      description: 'Working on exciting projects...'
+      description: 'Enterprise search infrastructure'
     },
     {
-      year: '2023',
-      title: 'Software Engineer',
-      description: 'Working on exciting projects...'
+      year: '2023 - 2025',
+      company: 'Cloudera',
+      title: 'Software Engineer II - AI Inference',
+      description: 'Model serving infrastructure on KServe'
     },
     {
-      year: '2023',
-      title: 'Software Engineer',
-      description: 'Working on exciting projects...'
+      year: '2019 -2023',
+      company: 'University of California, Berkeley',
+      title: 'B.A. Computer Science',
+      description: 'GPA: 3.9/4'
     },
-    // Add more timeline items as needed
+    {
+      year: '2022 - 2022',
+      company: 'Cloudera',
+      title: 'Software Engineer Intern - Machine Learning',
+      description: 'Kubernetes operators for AI Workloads'
+    },
+    {
+      year: '2021 - 2021',
+      company: 'University of California, Berkeley',
+      title: 'Undergraduate Researcher',
+      description: 'Pipeline load balancing and graph search heuristics'
+    },
   ];
 
   return (
@@ -90,9 +106,15 @@ const About: FC = () => {
           animation: `${floatUp} 0.6s ease-out 0.6s forwards`,
           opacity: 0
         }}>
-          <Typography variant="h4" gutterBottom>
-            Professional Journey
+        <Box sx={{ 
+          textAlign: 'left',
+          animation: `${floatUp} 0.6s ease-out 0.2s forwards`,
+          opacity: 0
+        }}>
+          <Typography gutterBottom sx={{ fontWeight: 500, fontSize: '1.3rem' }}>
+            Timeline
           </Typography>
+        </Box>
           <Timeline items={timelineItems} />
         </Box>
       </Stack>

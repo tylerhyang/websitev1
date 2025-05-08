@@ -12,7 +12,7 @@ const TypingText: FC = () => {
       const timeout = setTimeout(() => {
         setText(prev => prev + fullText[currentIndex]);
         setCurrentIndex(prev => prev + 1);
-      }, 100); // Speed of typing
+      }, 100);
 
       return () => clearTimeout(timeout);
     }

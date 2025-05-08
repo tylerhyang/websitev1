@@ -1,8 +1,9 @@
-import { Box, Typography, Paper } from '@mui/material';
+import { Box, Typography, Paper, Stack } from '@mui/material';
 import type { FC } from 'react';
 
 type TimelineItem = {
   year: string;
+  company: string;
   title: string;
   description: string;
 };
@@ -31,12 +32,13 @@ const Timeline: FC<TimelineProps> = ({ items }) => {
           key={index}
           sx={{
             position: 'relative',
-            mb: 4,
+            mb: 3,
             '&::before': {
               content: '""',
               position: 'absolute',
               left: -3,
-              top: 0,
+              top: '50%',
+              transform: 'translateY(-50%)',
               width: '8px',
               height: '8px',
               borderRadius: '50%',
@@ -44,23 +46,47 @@ const Timeline: FC<TimelineProps> = ({ items }) => {
             },
           }}
         >
-          <Typography variant="h6" color="primary" gutterBottom>
-            {item.year}
-          </Typography>
           <Paper
             elevation={2}
             sx={{
-              p: 2,
+              p: 3,
               ml: 2,
               backgroundColor: 'background.paper',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'translateX(8px)',
+                boxShadow: 4,
+                backgroundColor: 'action.hover',
+                cursor: 'pointer'
+              }
             }}
           >
-            <Typography variant="h6" gutterBottom>
-              {item.title}
-            </Typography>
-            <Typography variant="body1">
-              {item.description}
-            </Typography>
+            <Stack spacing={1}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Typography color="inherit" sx={{fontWeight: 500 }}>
+                  {item.company}
+                </Typography>
+                <Typography color="inherit"sx={{fontWeight: 500 }}>
+                  {item.year}
+                </Typography>
+              </Box>
+              <Typography 
+                color="text.secondary" 
+                sx={{ 
+                  fontSize: '0.9rem', 
+                  textAlign: 'left'
+                }}
+              >
+                {item.title}
+              </Typography>
+              <Typography
+                sx={{ 
+                  fontSize: '0.85rem', 
+                  textAlign: 'left'
+                }}>
+                {item.description}
+              </Typography>
+            </Stack>
           </Paper>
         </Box>
       ))}

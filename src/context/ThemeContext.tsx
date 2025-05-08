@@ -22,7 +22,6 @@ type ThemeProviderProps = {
 };
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  // Initialize state from localStorage or default to false
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme ? savedTheme === 'dark' : false;
@@ -33,6 +32,12 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
       createTheme({
         palette: {
           mode: isDarkMode ? 'dark' : 'light',
+          primary: {
+            main: '#98D8AA',
+            light: '#B4E4C7',
+            dark: '#7BC68C',
+            contrastText: '#2C3E50',
+          },         
         },
         typography: {
           fontFamily: [
