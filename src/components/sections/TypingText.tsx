@@ -23,9 +23,8 @@ const TypingText: FC = () => {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'flex-start',
-        minHeight: '100vh',
-        pt: 8, // Add padding top to account for navbar
+        alignItems: 'center',
+        minHeight: '200px',
       }}
     >
       <Typography
