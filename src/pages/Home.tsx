@@ -1,18 +1,8 @@
-import { Box, Avatar, Typography, IconButton, Stack, Paper, keyframes } from '@mui/material';
+import { Box, Avatar, Typography, IconButton, Stack, Paper} from '@mui/material';
 import { GitHub, LinkedIn, Instagram, Email } from '@mui/icons-material';
 import TypingText from '../components/sections/TypingText';
+import { floatUp } from '../components/ui/animations';
 import type { FC } from 'react';
-
-const floatUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
 
 const Home: FC = () => {
   return (

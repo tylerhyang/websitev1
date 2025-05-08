@@ -1,18 +1,24 @@
-import { AppBar, Toolbar, Button, Container, Box, IconButton } from '@mui/material';
+import { AppBar, Toolbar, Button, Container, Box, IconButton, useTheme } from '@mui/material';
 import { 
   LightMode, 
   LightModeOutlined, 
   HomeOutlined, 
   PersonOutlined, 
   Code, 
-  EditNoteOutlined 
+  EditNoteOutlined
 } from '@mui/icons-material';
-import { Link as RouterLink } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useTheme as useCustomTheme } from '../../context/ThemeContext';
 import type { FC } from 'react';
 
 const Navbar: FC = () => {
-  const { toggleTheme, isDarkMode } = useTheme();
+  const { toggleTheme, isDarkMode } = useCustomTheme();
+  const theme = useTheme();
+  const location = useLocation();
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
 
   return (
     <AppBar position="fixed" color="default" elevation={0} sx={{ backgroundColor: 'background.paper' }}>
@@ -28,7 +34,10 @@ const Navbar: FC = () => {
                 '&:hover': { 
                   color: 'inherit',
                   backgroundColor: 'transparent'
-                }
+                },
+                boxShadow: isActive('/') ? '0 0 10px rgba(0, 0, 0, 0.2)' : 'none',
+                borderRadius: '8px',
+                padding: '6px 16px'
               }}
             >
               Home
@@ -42,7 +51,10 @@ const Navbar: FC = () => {
                 '&:hover': { 
                   color: 'inherit',
                   backgroundColor: 'transparent'
-                }
+                },
+                boxShadow: isActive('/about') ? '0 0 10px rgba(0, 0, 0, 0.2)' : 'none',
+                borderRadius: '8px',
+                padding: '6px 16px'
               }}
             >
               About
@@ -56,7 +68,10 @@ const Navbar: FC = () => {
                 '&:hover': { 
                   color: 'inherit',
                   backgroundColor: 'transparent'
-                }
+                },
+                boxShadow: isActive('/projects') ? '0 0 10px rgba(0, 0, 0, 0.2)' : 'none',
+                borderRadius: '8px',
+                padding: '6px 16px'
               }}
             >
               Projects
@@ -70,7 +85,10 @@ const Navbar: FC = () => {
                 '&:hover': { 
                   color: 'inherit',
                   backgroundColor: 'transparent'
-                }
+                },
+                boxShadow: isActive('/notes') ? '0 0 10px rgba(0, 0, 0, 0.2)' : 'none',
+                borderRadius: '8px',
+                padding: '6px 16px'
               }}
             >
               Notes

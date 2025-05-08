@@ -1,18 +1,8 @@
 import { Box, Typography, Stack, Paper, keyframes } from '@mui/material';
 import ImageCarousel from '../components/sections/ImageCarousel';
 import Timeline from '../components/sections/Timeline';
+import { floatUp } from '../components/ui/animations';
 import type { FC } from 'react';
-
-const floatUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
 
 type TimelineItem = {
   year: string;
