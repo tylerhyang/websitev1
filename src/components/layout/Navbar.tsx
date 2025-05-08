@@ -2,11 +2,12 @@ import { AppBar, Toolbar, Button, Container, Box, IconButton } from '@mui/materi
 import { 
   LightMode, 
   LightModeOutlined, 
-  Home, 
-  Person, 
+  HomeOutlined, 
+  PersonOutlined, 
   Code, 
-  Note 
+  EditNoteOutlined 
 } from '@mui/icons-material';
+import { Link as RouterLink } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import type { FC } from 'react';
 
@@ -20,8 +21,9 @@ const Navbar: FC = () => {
           <Box sx={{ flexGrow: 1, display: 'flex', gap: 2 }}>
             <Button 
               color="inherit" 
-              href="/"
-              startIcon={<Home />}
+              component={RouterLink}
+              to="/"
+              startIcon={<HomeOutlined />}
               sx={{ 
                 '&:hover': { 
                   color: 'inherit',
@@ -33,8 +35,9 @@ const Navbar: FC = () => {
             </Button>
             <Button 
               color="inherit" 
-              href="#about"
-              startIcon={<Person />}
+              component={RouterLink}
+              to="/about"
+              startIcon={<PersonOutlined />}
               sx={{ 
                 '&:hover': { 
                   color: 'inherit',
@@ -46,7 +49,8 @@ const Navbar: FC = () => {
             </Button>
             <Button 
               color="inherit" 
-              href="#projects"
+              component={RouterLink}
+              to="/projects"
               startIcon={<Code />}
               sx={{ 
                 '&:hover': { 
@@ -59,8 +63,9 @@ const Navbar: FC = () => {
             </Button>
             <Button 
               color="inherit" 
-              href="#notes"
-              startIcon={<Note />}
+              component={RouterLink}
+              to="/notes"
+              startIcon={<EditNoteOutlined />}
               sx={{ 
                 '&:hover': { 
                   color: 'inherit',
