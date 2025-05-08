@@ -1,5 +1,5 @@
 import { Box, Avatar, Typography, IconButton, Stack, Paper } from '@mui/material';
-import { GitHub, LinkedIn } from '@mui/icons-material';
+import { GitHub, LinkedIn, Instagram, Email } from '@mui/icons-material';
 import TypingText from '../components/sections/TypingText';
 import type { FC } from 'react';
 
@@ -70,11 +70,13 @@ const Home: FC = () => {
               href="https://github.com/yourusername"
               target="_blank"
               rel="noopener noreferrer"
-              color="primary"
+              color="inherit"
               sx={{
                 '&:hover': {
                   transform: 'scale(1.1)',
                   transition: 'transform 0.2s',
+                  color: 'inherit',
+                  backgroundColor: 'transparent'
                 },
               }}
             >
@@ -84,15 +86,49 @@ const Home: FC = () => {
               href="https://linkedin.com/in/yourusername"
               target="_blank"
               rel="noopener noreferrer"
-              color="primary"
+              color="inherit"
               sx={{
                 '&:hover': {
                   transform: 'scale(1.1)',
                   transition: 'transform 0.2s',
+                  color: 'inherit',
+                  backgroundColor: 'transparent'
                 },
               }}
             >
               <LinkedIn fontSize="large" />
+            </IconButton>
+            <IconButton
+              href="https://linkedin.com/in/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="inherit"
+              sx={{
+                '&:hover': {
+                  transform: 'scale(1.1)',
+                  transition: 'transform 0.2s',
+                  color: 'inherit',
+                  backgroundColor: 'transparent'
+                },
+              }}
+            >
+              <Instagram fontSize="large" />
+            </IconButton>
+            <IconButton
+              href="https://linkedin.com/in/yourusername"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="inherit"
+              sx={{
+                '&:hover': {
+                  transform: 'scale(1.1)',
+                  transition: 'transform 0.2s',
+                  color: 'inherit',
+                  backgroundColor: 'transparent'
+                },
+              }}
+            >
+              <Email fontSize="large" />
             </IconButton>
           </Stack>
         </Paper>

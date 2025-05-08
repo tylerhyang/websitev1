@@ -40,6 +40,8 @@ const TypingText: FC = () => {
             height: '1em',
             backgroundColor: 'text.primary',
             marginLeft: '4px',
+            marginBottom: '0.1em',
+            verticalAlign: 'middle',
             animation: 'blink 1s step-end infinite',
           },
           '@keyframes blink': {
