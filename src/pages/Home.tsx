@@ -1,7 +1,19 @@
-import { Box, Avatar, Typography, IconButton, Stack, Paper } from '@mui/material';
+import { Box, Avatar, Typography, IconButton, Stack, Paper, keyframes } from '@mui/material';
 import { GitHub, LinkedIn, Instagram, Email } from '@mui/icons-material';
 import TypingText from '../components/sections/TypingText';
 import type { FC } from 'react';
+
+// Define the floating animation
+const floatUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 const Home: FC = () => {
   return (
@@ -20,6 +32,8 @@ const Home: FC = () => {
             backgroundColor: 'background.paper',
             border: '1px solid',
             borderColor: 'divider',
+            animation: `${floatUp} 0.6s ease-out 0.2s forwards`,
+            opacity: 0,
           }}
         >
           <Stack 
@@ -63,6 +77,8 @@ const Home: FC = () => {
             backgroundColor: 'background.paper',
             border: '1px solid',
             borderColor: 'divider',
+            animation: `${floatUp} 0.6s ease-out 0.4s forwards`,
+            opacity: 0,
           }}
         >
           <Stack direction="row" spacing={2} justifyContent="center">
