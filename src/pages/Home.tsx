@@ -1,7 +1,7 @@
 import { Box, Avatar, Typography, IconButton, Stack, Paper} from '@mui/material';
-import { GitHub, LinkedIn, Instagram, Email } from '@mui/icons-material';
+import { GitHub, LinkedIn, Email } from '@mui/icons-material';
 import TypingText from '../components/sections/TypingText';
-import { floatUp } from '../components/ui/animations';
+import { floatUp } from '../components/ui/Animations';
 import type { FC } from 'react';
 
 const Home: FC = () => {

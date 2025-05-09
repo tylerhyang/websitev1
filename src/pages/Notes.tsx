@@ -1,5 +1,5 @@
-import { Typography, Box, Stack } from '@mui/material';
-import { floatUp } from '../components/ui/animations';
+import { Box, Typography, Stack } from '@mui/material';
+import { floatUp } from '../components/ui/Animations';
 import type { FC } from 'react';
 
 const Notes: FC = () => {

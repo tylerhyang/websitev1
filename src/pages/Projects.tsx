@@ -1,7 +1,7 @@
 import { Typography, Box, Stack, Container, Card, CardContent, Chip, Link } from '@mui/material';
 import { GitHub } from '@mui/icons-material';
 import type { FC } from 'react';
-import { floatUp } from '../components/ui/animations';
+import { floatUp } from '../components/ui/Animations';
 
 type Project = {
   name: string;

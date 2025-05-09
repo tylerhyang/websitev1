@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Button, Container, Box, IconButton, useTheme } from '@mui/material';
+import { AppBar, Toolbar, Button, Container, Box, IconButton } from '@mui/material';
 import { 
   LightMode, 
   LightModeOutlined, 
@@ -13,7 +13,6 @@ import type { FC } from 'react';
 
 const Navbar: FC = () => {
   const { toggleTheme, isDarkMode } = useCustomTheme();
-  const theme = useTheme();
   const location = useLocation();
 
   const isActive = (path: string) => {

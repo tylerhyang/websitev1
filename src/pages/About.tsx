@@ -1,7 +1,7 @@
 import { Box, Typography, Stack, Paper } from '@mui/material';
 import FlipCardGrid from '../components/sections/FlipCardGrid';
 import Timeline from '../components/sections/Timeline';
-import { floatUp } from '../components/ui/animations';
+import { floatUp } from '../components/ui/Animations';
 import type { FC } from 'react';
 
 type TimelineItem = {
