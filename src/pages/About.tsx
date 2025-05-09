@@ -20,9 +20,9 @@ const About: FC = () => {
       title: 'Remy'
     },
     {
-      frontImage: '/src/assets/cat.jpg',
-      backText: 'My cat, Remy',
-      title: 'Remy'
+      frontImage: '/src/assets/pottery.jpg',
+      backText: "Some pottery i've thrown lately.\n  \n Clay body: Speckled Buff",
+      title: 'pottery'
     },
     {
       frontImage: '/src/assets/cat.jpg',
@@ -138,7 +138,7 @@ const About: FC = () => {
               Gallery
             </Typography>
           </Box>
-          <FlipCardGrid images={images} />
+          <FlipCardGrid images={images}/>
         {/* Timeline Section */}
         <Box sx={{ 
           animation: `${floatUp} 0.6s ease-out 0.6s forwards`,
