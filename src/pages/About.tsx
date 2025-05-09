@@ -3,6 +3,9 @@ import FlipCardGrid from '../components/sections/FlipCardGrid';
 import Timeline from '../components/sections/Timeline';
 import { floatUp } from '../components/ui/Animations';
 import type { FC } from 'react';
+import catImage from '../assets/cat.jpg';
+import potteryImage from '../assets/pottery.jpg';
+import firetrailsImage from '../assets/firetrails.jpg';
 
 type TimelineItem = {
   year: string;
@@ -15,17 +18,17 @@ type TimelineItem = {
 const About: FC = () => {
   const images = [
     {
-      frontImage: '/public/assets/cat.jpg',
+      frontImage: catImage,
       backText: 'My cat, Remy',
       title: 'Remy'
     },
     {
-      frontImage: '/public/assets/pottery.jpg',
+      frontImage: potteryImage,
       backText: "Some pottery i've thrown lately.\n  \n Clay body: Speckled Buff",
       title: 'Pottery'
     },
     {
-      frontImage: '/public/assets/firetrails.jpg',
+      frontImage: firetrailsImage,
       backText: 'Fire trails hike \n \n Berkeley, CA',
       title: 'Fire Trails Afternoon'
     }

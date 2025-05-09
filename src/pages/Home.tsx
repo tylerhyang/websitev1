@@ -3,6 +3,8 @@ import { GitHub, LinkedIn, Email } from '@mui/icons-material';
 import TypingText from '../components/sections/TypingText';
 import { floatUp } from '../components/ui/Animations';
 import type { FC } from 'react';
+import headshotImage from '../assets/headshot.jpg';
+
 
 const Home: FC = () => {
   return (
@@ -39,7 +41,7 @@ const Home: FC = () => {
                 borderColor: 'primary.main',
               }}
               alt="Tyler Yang"
-              src="/public/assets/ty-headshot.JPG" // You'll replace this with your image path
+              src={headshotImage}
             />
 
             {/* Bio */}
