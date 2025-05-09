@@ -3,9 +3,9 @@ import FlipCardGrid from '../components/sections/FlipCardGrid';
 import Timeline from '../components/sections/Timeline';
 import { floatUp } from '../components/ui/Animations';
 import type { FC } from 'react';
-import catImage from '../assets/cat.jpg';
-import potteryImage from '../assets/pottery.jpg';
-import firetrailsImage from '../assets/firetrails.jpg';
+import catImage from '/assets/cat.jpg';
+import potteryImage from '/assets/pottery.jpg';
+import firetrailsImage from '/assets/firetrails.jpg';
 
 type TimelineItem = {
   year: string;

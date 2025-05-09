@@ -3,7 +3,7 @@ import { GitHub, LinkedIn, Email } from '@mui/icons-material';
 import TypingText from '../components/sections/TypingText';
 import { floatUp } from '../components/ui/Animations';
 import type { FC } from 'react';
-import headshotImage from '../assets/headshot.jpg';
+import headshotImage from '/assets/headshot.jpg';
 
 
 const Home: FC = () => {
