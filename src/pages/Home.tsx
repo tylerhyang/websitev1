@@ -47,11 +47,12 @@ const Home: FC = () => {
             {/* Bio */}
             <Box sx={{ flex: 1, textAlign: 'left' }}>
               <Typography variant="body1" paragraph>
-                I am currently a software engineer based out of San Francisco. I studied Computer Science at the University of California, Berkeley and graduated in 2023.
+                I am a software engineer based out of San Francisco with a Bachelor's degree in Computer Science from the University of California, Berkeley.
+                I'm currently pursuing a Master's degree in Computer Science at Georgia Tech with emphasis on AI and distributed systems. 
               </Typography>
               <Typography variant="body1" paragraph>
-                Currently I am focused on backend and cloud infrastructure developement for AI applications.
-                I am passionate about ethical AI, data privacy, and distributed systems.
+                Currently I am focused on backend and cloud infrastructure development for AI applications.
+                I am passionate about ethical AI, agentic workflows, and distributed systems.
               </Typography>
             </Box>
           </Stack>
