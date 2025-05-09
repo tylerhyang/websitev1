@@ -14,13 +14,13 @@ const Projects: FC = () => {
   const openSourceProjects: Project[] = [
     {
       name: "KServe - Annotation Injection for Payload Logging",
-      url: "https://github.com/kubernetes/kubernetes",
+      url: "https://github.com/kserve/kserve/pull/4325",
       description: "Enable specified inferenceservice annotations to be propagated down to the agent sidecar for payload logging",
       technologies: ["Go", "Kubernetes", "Docker"]
     },
     {
       name: "KServe - User-Supplied Inference Payload Logging Schemas",
-      url: "https://github.com/tensorflow/tensorflow",
+      url: "https://github.com/kserve/kserve/pull/4392",
       description: "Enable user to bring their own inference payload logging schemas to be used for payload logging",
       technologies: ["Go", "Kubernetes", "Docker"]
     }
@@ -29,7 +29,7 @@ const Projects: FC = () => {
   const personalProjects: Project[] = [
     {
       name: "Personal Website",
-      url: "https://github.com/yourusername/ml-serving",
+      url: "https://tylerhyang.com",
       description: "This current website.  Built to share who I am and what I've done.",
       technologies: ["Typescript", "React", "Material-UI", "HTML", "CSS"]
     },

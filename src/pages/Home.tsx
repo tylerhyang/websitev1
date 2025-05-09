@@ -39,7 +39,7 @@ const Home: FC = () => {
                 borderColor: 'primary.main',
               }}
               alt="Tyler Yang"
-              src="/path-to-your-image.jpg" // You'll replace this with your image path
+              src="../src/assets/ty-headshot.JPG" // You'll replace this with your image path
             />
 
             {/* Bio */}

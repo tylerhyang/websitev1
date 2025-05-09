@@ -1,4 +1,4 @@
-import { Box, Typography, Paper, Stack } from '@mui/material';
+import { Box, Typography, Paper, Stack, Link } from '@mui/material';
 import type { FC } from 'react';
 
 type TimelineItem = {
@@ -6,6 +6,7 @@ type TimelineItem = {
   company: string;
   title: string;
   description: string;
+  companyUrl?: string;
 };
 
 interface TimelineProps {
@@ -63,9 +64,28 @@ const Timeline: FC<TimelineProps> = ({ items }) => {
           >
             <Stack spacing={1}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Typography color="inherit" sx={{fontWeight: 500 }}>
-                  {item.company}
-                </Typography>
+                {item.companyUrl ? (
+                  <Link
+                    href={item.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      color: 'inherit',
+                      textDecoration: 'none',
+                      fontWeight: 500,
+                      '&:hover': {
+                        color: 'primary.main',
+                        textDecoration: 'underline'
+                      }
+                    }}
+                  >
+                    {item.company}
+                  </Link>
+                ) : (
+                  <Typography color="inherit" sx={{fontWeight: 500 }}>
+                    {item.company}
+                  </Typography>
+                )}
                 <Typography color="inherit"sx={{fontWeight: 500 }}>
                   {item.year}
                 </Typography>
