@@ -15,17 +15,17 @@ type TimelineItem = {
 const About: FC = () => {
   const images = [
     {
-      frontImage: '/src/assets/cat.jpg',
+      frontImage: '/public/assets/cat.jpg',
       backText: 'My cat, Remy',
       title: 'Remy'
     },
     {
-      frontImage: '/src/assets/pottery.jpg',
+      frontImage: '/public/assets/pottery.jpg',
       backText: "Some pottery i've thrown lately.\n  \n Clay body: Speckled Buff",
       title: 'Pottery'
     },
     {
-      frontImage: '/src/assets/firetrails.jpg',
+      frontImage: '/public/assets/firetrails.jpg',
       backText: 'Fire trails hike \n \n Berkeley, CA',
       title: 'Fire Trails Afternoon'
     }
