@@ -72,7 +72,7 @@ const Home: FC = () => {
         >
           <Stack direction="row" spacing={2} justifyContent="center">
             <IconButton
-              href="https://github.com/yourusername"
+              href="https://github.com/tylerhyang"
               target="_blank"
               rel="noopener noreferrer"
               color="inherit"
@@ -88,7 +88,7 @@ const Home: FC = () => {
               <GitHub fontSize="large" />
             </IconButton>
             <IconButton
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/tylerhyang/"
               target="_blank"
               rel="noopener noreferrer"
               color="inherit"
@@ -104,23 +104,7 @@ const Home: FC = () => {
               <LinkedIn fontSize="large" />
             </IconButton>
             <IconButton
-              href="https://linkedin.com/in/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="inherit"
-              sx={{
-                '&:hover': {
-                  transform: 'scale(1.1)',
-                  transition: 'transform 0.2s',
-                  color: 'inherit',
-                  backgroundColor: 'transparent'
-                },
-              }}
-            >
-              <Instagram fontSize="large" />
-            </IconButton>
-            <IconButton
-              href="https://linkedin.com/in/yourusername"
+              href="mailto:2tyleryang@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               color="inherit"

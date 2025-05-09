@@ -22,19 +22,13 @@ const About: FC = () => {
     {
       frontImage: '/src/assets/pottery.jpg',
       backText: "Some pottery i've thrown lately.\n  \n Clay body: Speckled Buff",
-      title: 'pottery'
+      title: 'Pottery'
     },
     {
-      frontImage: '/src/assets/cat.jpg',
-      backText: 'My cat, Remy',
-      title: 'Remy'
-    },
-    {
-      frontImage: '/src/assets/cat.jpg',
-      backText: 'My cat, Remy',
-      title: 'Remy'
-    },
-
+      frontImage: '/src/assets/firetrails.jpg',
+      backText: 'Fire trails hike \n \n Berkeley, CA',
+      title: 'Fire Trails Afternoon'
+    }
   ];
 
   const technologies = {
@@ -128,16 +122,11 @@ const About: FC = () => {
           <Typography sx={{ fontWeight: 700, fontSize: '1.5rem' }}>
             About
           </Typography>
-          <Typography sx={{ fontWeight: 700 }} color="text.secondary">
+          <Typography sx={{ fontWeight: 700 }} color="text.secondary" gutterBottom>
             Who I am
           </Typography>
         </Box>
         {/* Flip Card Grid Section */}
-          <Box sx={{ textAlign: 'left', mb: 4, animation: `${floatUp} 0.6s ease-out 0.4s forwards`}}>
-            <Typography sx={{ fontWeight: 500, fontSize: '1.3rem' }}>
-              Gallery
-            </Typography>
-          </Box>
           <FlipCardGrid images={images}/>
         {/* Timeline Section */}
         <Box sx={{ 
