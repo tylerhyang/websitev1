@@ -24,7 +24,7 @@ const About: FC = () => {
     },
     {
       frontImage: potteryImage,
-      backText: "Some pottery i've thrown lately.\n  \n Clay body: Speckled Buff",
+      backText: "Some pottery I made during my free time\n  \n Clay body: Speckled Buff",
       title: 'Pottery'
     },
     {
@@ -73,15 +73,15 @@ const About: FC = () => {
       title: 'M.S. Computer Science',
       description: 'Concentration: Computing Systems'
     },
+    // {
+    //   year: '2025 - Present',
+    //   company: 'Glean',
+    //   companyUrl: 'https://www.glean.com',
+    //   title: 'Software Engineer - Data Foundations',
+    //   description: 'Enterprise search infrastructure'
+    // },
     {
-      year: '2025 - Present',
-      company: 'Glean',
-      companyUrl: 'https://www.glean.com',
-      title: 'Software Engineer - Data Foundations',
-      description: 'Enterprise search infrastructure'
-    },
-    {
-      year: '2023 - 2025',
+      year: '2023 - Present',
       company: 'Cloudera',
       companyUrl: 'https://www.cloudera.com',
       title: 'Software Engineer II - AI Inference',
