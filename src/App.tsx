@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Notes from './pages/Notes';
+import Footer from './components/layout/Footer';
 import './App.css';
 import type { FC } from 'react';
 
@@ -23,6 +24,7 @@ const App: FC = () => {
             <Route path="/notes" element={<Notes />} />
           </Routes>
         </main>
+        <Footer />
       </Router>
     </ThemeProvider>
   );

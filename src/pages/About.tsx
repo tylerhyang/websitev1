@@ -85,7 +85,7 @@ const About: FC = () => {
     //   description: 'Enterprise search infrastructure'
     // },
     {
-      year: '2023 - Present',
+      year: '2023 - 2025',
       company: 'Cloudera',
       companyUrl: 'https://www.cloudera.com',
       title: 'Software Engineer II - Gen AI/ML',
