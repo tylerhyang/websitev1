@@ -36,32 +36,36 @@ const About: FC = () => {
 
   const technologies = {
     Languages: [
-      { name: 'Go', icon: 'devicon-go-original-wordmark' },
-      { name: 'Python', icon: 'devicon-python-plain' },
-      { name: 'Java', icon: 'devicon-java-plain' },
       { name: 'Bash', icon: 'devicon-bash-plain' },
-      { name: 'JavaScript', icon: 'devicon-typescript-plain' },
       { name: 'C++', icon: 'devicon-cplusplus-plain' },
+      { name: 'Go', icon: 'devicon-go-original-wordmark' },
+      { name: 'Java', icon: 'devicon-java-plain' },
+      { name: 'JavaScript', icon: 'devicon-typescript-plain' },
+      { name: 'Python', icon: 'devicon-python-plain' },
       { name: 'Ruby', icon: 'devicon-ruby-plain' },
     ],
     Frameworks: [
-      { name: 'gRPC', icon: 'devicon-grpc-plain' },
+      { name: 'Airflow', icon: 'devicon-apacheairflow-plain' },
+      { name: 'FastAPI', icon: 'devicon-fastapi-plain' },
       { name: 'Flask', icon: 'devicon-flask-original' },
-      { name: 'TensorFlow', icon: 'devicon-tensorflow-original' },
       { name: 'PyTorch', icon: 'devicon-pytorch-original' },
       { name: 'React', icon: 'devicon-react-original' },
-      { name: 'Prometheus', icon: 'devicon-prometheus-original' },
-      { name: 'FastAPI', icon: 'devicon-fastapi-plain' },
+      { name: 'Scikit-Learn', icon: 'devicon-scikitlearn-plain' },
+      { name: 'TensorFlow', icon: 'devicon-tensorflow-original' }
     ],
     Tools: [
-      { name: 'Git', icon: 'devicon-git-plain' },
-      { name: 'Docker', icon: 'devicon-docker-plain' },
-      { name: 'Kubernetes', icon: 'devicon-kubernetes-plain' },
-      { name: 'Helm', icon: 'devicon-helm-plain' },
       { name: 'AWS', icon: 'devicon-amazonwebservices-plain-wordmark' },
       { name: 'Azure', icon: 'devicon-azure-plain' },
-      { name: 'PostgreSQL', icon: 'devicon-postgresql-plain' },
+      { name: 'Docker', icon: 'devicon-docker-plain' },
+      { name: 'gRPC', icon: 'devicon-grpc-plain' },
+      { name: 'Git', icon: 'devicon-git-plain' },
+      { name: 'GraphQL', icon: 'devicon-graphql-plain' },  
+      { name: 'Helm', icon: 'devicon-helm-plain' },
       { name: 'Kafka', icon: 'devicon-apachekafka-plain' },
+      { name: 'Kubernetes', icon: 'devicon-kubernetes-plain' },
+      { name: 'PostgreSQL', icon: 'devicon-postgresql-plain' },    
+      { name: 'Prometheus', icon: 'devicon-prometheus-original' },
+      { name: 'Swagger', icon: 'devicon-swagger-plain' },
     ],
   };
 
@@ -84,7 +88,7 @@ const About: FC = () => {
       year: '2023 - Present',
       company: 'Cloudera',
       companyUrl: 'https://www.cloudera.com',
-      title: 'Software Engineer II - AI Inference',
+      title: 'Software Engineer II - Gen AI/ML',
       description: 'Model serving infrastructure on KServe'
     },
     {
