@@ -75,15 +75,15 @@ const About: FC = () => {
       company: 'Georgia Institute of Technology',
       companyUrl: 'https://www.gatech.edu',
       title: 'M.S. Computer Science',
-      description: 'Concentration: Computing Systems'
+      description: 'Concentration: Machine Learning'
     },
-    // {
-    //   year: '2025 - Present',
-    //   company: 'Glean',
-    //   companyUrl: 'https://www.glean.com',
-    //   title: 'Software Engineer - Data Foundations',
-    //   description: 'Enterprise search infrastructure'
-    // },
+    {
+      year: '2025 - Present',
+      company: 'Glean',
+      companyUrl: 'https://www.glean.com',
+      title: 'Software Engineer',
+      description: 'Enterprise search infrastructure'
+    },
     {
       year: '2023 - 2025',
       company: 'Cloudera',
