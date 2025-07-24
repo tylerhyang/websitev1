@@ -81,8 +81,8 @@ const About: FC = () => {
       year: '2025 - Present',
       company: 'Glean',
       companyUrl: 'https://www.glean.com',
-      title: 'Software Engineer',
-      description: 'Enterprise search infrastructure'
+      title: 'Software Engineer - Data Foundations',
+      description: 'Data connectors and infrastructure for search'
     },
     {
       year: '2023 - 2025',
