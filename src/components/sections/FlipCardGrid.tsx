@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import type { FC } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import { keyframes } from '@mui/material';
