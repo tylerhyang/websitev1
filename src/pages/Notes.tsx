@@ -5,7 +5,7 @@ import type { FC } from 'react';
 type NoteItem = {
   course: string;
   notes: string;
-  status: 'completed' | 'in-progress';
+  status: 'completed' | 'in-progress' | 'scheduled';
 };
 
 const Notes: FC = () => {
@@ -13,18 +13,69 @@ const Notes: FC = () => {
     {
       course: 'TBD',
       notes: 'TBD',
-      status: 'unknown'
+      status: 'in-progress'
     }
   ];
 
   const getStatusChip = (status: string) => {
     switch (status) {
       case 'completed':
-        return <Chip label="Completed" color="success" size="small" />;
+        return (
+          <Chip 
+            label="Completed" 
+            size="small" 
+            sx={{ 
+              backgroundColor: '#98D8AA',
+              color: '#2C3E50',
+              fontWeight: 500,
+              '&:hover': {
+                backgroundColor: '#B4E4C7',
+              }
+            }} 
+          />
+        );
       case 'in-progress':
-        return <Chip label="In Progress" color="info" size="small" />;
+        return (
+          <Chip 
+            label="In Progress" 
+            size="small" 
+            sx={{ 
+              backgroundColor: '#A8D8EA',
+              color: '#2C3E50',
+              fontWeight: 500,
+              '&:hover': {
+                backgroundColor: '#B8E0F0',
+              }
+            }} 
+          />
+        );
+      case 'scheduled':
+        return (
+          <Chip 
+            label="Scheduled" 
+            size="small" 
+            sx={{ 
+              backgroundColor: '#D4B5FF',
+              color: '#2C3E50',
+              fontWeight: 500,
+              '&:hover': {
+                backgroundColor: '#E0C4FF',
+              }
+            }} 
+          />
+        );
       default:
-        return <Chip label="Unknown" color="default" size="small" />;
+        return (
+          <Chip 
+            label="Unknown" 
+            size="small" 
+            sx={{ 
+              backgroundColor: '#E0E0E0',
+              color: '#2C3E50',
+              fontWeight: 500,
+            }} 
+          />
+        );
     }
   };
 
