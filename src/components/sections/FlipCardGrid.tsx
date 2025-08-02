@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import type { FC } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import { keyframes } from '@mui/material';
@@ -8,6 +8,8 @@ type ImageItem = {
   frontImage: string;
   backText: string;
   title: string;
+  date?: string;
+  location?: string;
 };
 
 interface FlipCardGridProps {
@@ -16,13 +18,48 @@ interface FlipCardGridProps {
 
 const FlipCardGrid: FC<FlipCardGridProps> = ({ images }) => {
   const [flippedCards, setFlippedCards] = useState<boolean[]>(Array(4).fill(false));
+  const [flippingCards, setFlippingCards] = useState<boolean[]>(Array(4).fill(false));
+  const hoverStates = useRef<boolean[]>(Array(4).fill(false));
 
   const handleCardHover = (index: number, isHovering: boolean) => {
+    // Update the hover state
+    hoverStates.current[index] = isHovering;
+    
+    // Don't start a new flip if one is already in progress
+    if (flippingCards[index]) {
+      return;
+    }
+
+    setFlippingCards(prev => {
+      const newState = [...prev];
+      newState[index] = true;
+      return newState;
+    });
+
     setFlippedCards(prev => {
       const newState = [...prev];
       newState[index] = isHovering;
       return newState;
     });
+
+    // Reset the flipping state after the animation completes
+    setTimeout(() => {
+      setFlippingCards(prev => {
+        const newState = [...prev];
+        newState[index] = false;
+        return newState;
+      });
+      
+      // Check if the hover state has changed during the animation
+      // and update the flip state accordingly
+      if (hoverStates.current[index] !== isHovering) {
+        setFlippedCards(prev => {
+          const newState = [...prev];
+          newState[index] = hoverStates.current[index];
+          return newState;
+        });
+      }
+    }, 600); // Match the flipSpeedBackToFront/flipSpeedFrontToBack duration
   };
 
   // Random rotations for each card
@@ -119,14 +156,32 @@ const FlipCardGrid: FC<FlipCardGridProps> = ({ images }) => {
                   backgroundColor: 'background.paper',
                   borderRadius: 2,
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
                   p: 3,
                   boxShadow: 3,
                   aspectRatio: '1/1',
                   cursor: 'pointer',
                 }}
               >
+                {/* Date section */}
+                {item.date && (
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      color: 'text.secondary',
+                      textAlign: 'center',
+                      fontSize: '0.75rem',
+                      fontWeight: 500,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px',
+                    }}
+                  >
+                    {item.date}
+                  </Typography>
+                )}
+                
+                {/* Body content */}
                 <Typography
                   variant="body2"
                   sx={{
@@ -134,10 +189,31 @@ const FlipCardGrid: FC<FlipCardGridProps> = ({ images }) => {
                     textAlign: 'center',
                     whiteSpace: 'pre-line',
                     fontSize: '0.875rem',
+                    flex: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
                   {item.backText}
                 </Typography>
+                
+                {/* Location section */}
+                {item.location && (
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      color: 'text.secondary',
+                      textAlign: 'center',
+                      fontSize: '0.75rem',
+                      fontWeight: 500,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px',
+                    }}
+                  >
+                    {item.location}
+                  </Typography>
+                )}
               </Box>
             </ReactCardFlip>
           </Box>

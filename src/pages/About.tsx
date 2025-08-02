@@ -5,7 +5,7 @@ import { floatUp } from '../components/ui/Animations';
 import type { FC } from 'react';
 import catImage from '/assets/cat.jpg';
 import potteryImage from '/assets/pottery.jpg';
-import firetrailsImage from '/assets/firetrails.jpg';
+import threeSistersImage from '/assets/three_sisters_au.jpg';
 
 type TimelineItem = {
   year: string;
@@ -20,17 +20,23 @@ const About: FC = () => {
     {
       frontImage: catImage,
       backText: 'My cat, Remy',
-      title: 'Remy'
+      title: 'Remy',
+      date: 'March 2025',
+      location: 'San Francisco, CA'
     },
     {
       frontImage: potteryImage,
-      backText: "Some pottery I made during my free time\n  \n Clay body: Speckled Buff",
-      title: 'Pottery'
+      backText: "I enjoy making pottery in my free time",
+      title: 'Pottery',
+      date: 'December 2024',
+      location: 'San Francisco, CA'
     },
     {
-      frontImage: firetrailsImage,
-      backText: 'Fire trails hike \n \n Berkeley, CA',
-      title: 'Fire Trails Afternoon'
+      frontImage: threeSistersImage,
+      backText: 'Viewpoint from Three Sisters hike',
+      title: 'Three Sisters Hike',
+      date: 'June 2025',
+      location: 'NSW, Australia'
     }
   ];
 
@@ -40,9 +46,9 @@ const About: FC = () => {
       { name: 'C++', icon: 'devicon-cplusplus-plain' },
       { name: 'Go', icon: 'devicon-go-original-wordmark' },
       { name: 'Java', icon: 'devicon-java-plain' },
-      { name: 'JavaScript', icon: 'devicon-typescript-plain' },
       { name: 'Python', icon: 'devicon-python-plain' },
       { name: 'Ruby', icon: 'devicon-ruby-plain' },
+      { name: 'TypeScript', icon: 'devicon-typescript-plain' }
     ],
     Frameworks: [
       { name: 'Airflow', icon: 'devicon-apacheairflow-plain' },
@@ -57,6 +63,7 @@ const About: FC = () => {
       { name: 'AWS', icon: 'devicon-amazonwebservices-plain-wordmark' },
       { name: 'Azure', icon: 'devicon-azure-plain' },
       { name: 'Docker', icon: 'devicon-docker-plain' },
+      { name: 'GCP', icon: 'devicon-googlecloud-plain' },
       { name: 'gRPC', icon: 'devicon-grpc-plain' },
       { name: 'Git', icon: 'devicon-git-plain' },
       { name: 'GraphQL', icon: 'devicon-graphql-plain' },  
@@ -65,6 +72,7 @@ const About: FC = () => {
       { name: 'Kubernetes', icon: 'devicon-kubernetes-plain' },
       { name: 'PostgreSQL', icon: 'devicon-postgresql-plain' },    
       { name: 'Prometheus', icon: 'devicon-prometheus-original' },
+      { name: 'Redis', icon: 'devicon-redis-plain' },
       { name: 'Swagger', icon: 'devicon-swagger-plain' },
     ],
   };

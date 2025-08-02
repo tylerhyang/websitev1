@@ -19,9 +19,9 @@ const Projects: FC = () => {
       technologies: ["Go", "Kubernetes", "Docker"]
     },
     {
-      name: "KServe - User-Supplied Inference Payload Logging Schemas",
-      url: "https://github.com/kserve/kserve/pull/4392",
-      description: "Enable user to bring their own inference payload logging schemas to be used for payload logging",
+      name: "KServe - Fix multi-header processing in logging framework",
+      url: "https://github.com/kserve/kserve/pull/4249",
+      description: "Enable proper parsing of multi-header payloads in payload logging framework",
       technologies: ["Go", "Kubernetes", "Docker"]
     }
   ];
