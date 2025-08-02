@@ -83,7 +83,7 @@ const About: FC = () => {
       company: 'Georgia Institute of Technology',
       companyUrl: 'https://www.gatech.edu',
       title: 'M.S. Computer Science',
-      description: 'Concentration: Machine Learning'
+      description: 'Specialization: Artificial Intelligence'
     },
     {
       year: '2025 - Present',

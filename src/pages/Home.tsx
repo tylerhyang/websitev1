@@ -48,11 +48,11 @@ const Home: FC = () => {
             <Box sx={{ flex: 1, textAlign: 'left' }}>
               <Typography variant="body1" paragraph>
                 I am a software engineer based out of San Francisco with a Bachelor's degree in Computer Science from the University of California, Berkeley.
-                I'm currently pursuing a Master's degree in Computer Science at Georgia Tech with emphasis on machine learning theory and distributed systems. 
+                I'm currently pursuing a Master's degree in Computer Science at Georgia Tech with emphasis on artificial intelligence and distributed systems. 
               </Typography>
               <Typography variant="body1" paragraph>
-                Currently I am focused on backend and cloud infrastructure development for AI applications.
-                I am passionate about ethical AI, agentic workflows, and distributed systems.
+                Currently I am focused on backend and infrastructure development for AI workloads.
+                I am passionate about ethical AI, agentic workflows, and algorithms.
               </Typography>
             </Box>
           </Stack>
