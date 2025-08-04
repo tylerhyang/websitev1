@@ -1,4 +1,4 @@
-import { Box, Typography, Stack, Paper } from '@mui/material';
+import { Box, Typography, Stack, Paper, Container } from '@mui/material';
 import FlipCardGrid from '../components/sections/FlipCardGrid';
 import Timeline from '../components/sections/Timeline';
 import { floatUp } from '../components/ui/Animations';
@@ -123,10 +123,10 @@ const About: FC = () => {
   ];
 
   return (
+    <Container sx={{maxWidth:'lg'}}>
     <Box sx={{ 
       px: 3, 
-      py: 4, 
-      width: '60vw'
+      py: 4
     }}>
       <Stack direction="column" spacing={4}>
         <Box sx={{ 
@@ -248,6 +248,7 @@ const About: FC = () => {
           </Stack>
       </Stack>
     </Box>
+    </Container>
   );
 };
 

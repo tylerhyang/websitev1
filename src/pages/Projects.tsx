@@ -15,13 +15,13 @@ const Projects: FC = () => {
     {
       name: "KServe - Annotation Injection for Payload Logging",
       url: "https://github.com/kserve/kserve/pull/4325",
-      description: "Enable specified inferenceservice annotations to be propagated down to the agent sidecar for payload logging",
+      description: "Enable specified inference service kubernetes annotations to be propagated to the agent sidecar for payload logging",
       technologies: ["Go", "Kubernetes", "Docker"]
     },
     {
       name: "KServe - Fix multi-header processing in logging framework",
       url: "https://github.com/kserve/kserve/pull/4249",
-      description: "Enable proper parsing of multi-header payloads in payload logging framework",
+      description: "Fix multi-header parsing in payload logging framework",
       technologies: ["Go", "Kubernetes", "Docker"]
     }
   ];
@@ -49,7 +49,7 @@ const Projects: FC = () => {
 
   return (
     <Container maxWidth="lg">
-      <Box sx={{ px: 3, py: 4, width: '60vw' }}>
+      <Box sx={{ px: 3, py: 4 }}>
         <Stack spacing={6}>
           {/* Header */}
           <Box sx={{ 
