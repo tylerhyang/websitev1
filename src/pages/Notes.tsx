@@ -11,7 +11,7 @@ type NoteItem = {
 };
 const Notes: FC = () => {
   const UC_BERKELEY = 'UC Berkeley';
-  const GEORGIA_TECH = 'Georgia Tech';
+  // const GEORGIA_TECH = 'Georgia Tech';
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedUniversity, setSelectedUniversity] = useState<string>('all');
   const notesData: NoteItem[] = [
