@@ -1,4 +1,5 @@
 import { Box, Container, Typography, Stack, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Chip, TextField, FormControl, InputLabel, Select, MenuItem, Link } from '@mui/material';
+import { Schedule } from '@mui/icons-material';
 import { floatUp } from '../components/ui/Animations';
 import { useState, useMemo } from 'react';
 import type { FC } from 'react';
@@ -11,7 +12,7 @@ type NoteItem = {
 };
 const Notes: FC = () => {
   const UC_BERKELEY = 'UC Berkeley';
-  // const GEORGIA_TECH = 'Georgia Tech';
+  const GEORGIA_TECH = 'Georgia Tech';
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedUniversity, setSelectedUniversity] = useState<string>('all');
   const notesData: NoteItem[] = [
@@ -20,6 +21,12 @@ const Notes: FC = () => {
       university: UC_BERKELEY,
       url: 'https://docs.google.com/document/d/1LDNRce6HYgEslVF_gqo1N_sUpB-YgPz6T5XC_LgIp2w/edit?tab=t.0#heading=h.1o8ul35vkldf',
       status: 'completed'
+    },
+    {
+      course: 'CS 7646 - Machine Learning for Trading',
+      university: GEORGIA_TECH,
+      url: '',
+      status: 'scheduled'
     }
   ];
 
@@ -190,29 +197,39 @@ const Notes: FC = () => {
                         {item.university}
                       </TableCell>
                       <TableCell>
-                      {<Link 
-                      href={item.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      sx={{
-                        color: 'text.primary',
-                        textDecoration: 'none',
-                        fontWeight: 500,
-                        padding: '6px 12px',
-                        borderRadius: '6px',
-                        backgroundColor: 'rgba(152, 216, 170, 0.1)',
-                        transition: 'all 0.2s ease-in-out',
-                        display: 'inline-block',
-                        '&:hover': {
-                          backgroundColor: '#98D8AA',
-                          color: 'black',
-                          transform: 'translateY(-1px)',
-                          boxShadow: '0 2px 8px rgba(152, 216, 170, 0.3)'
-                        }
-                      }}
-                        >
-                        link
-                      </Link>}
+                        {item.url ? (
+                          <Link 
+                            href={item.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            sx={{
+                              color: 'text.primary',
+                              textDecoration: 'none',
+                              fontWeight: 500,
+                              fontSize: '0.875rem',
+                              padding: '6px 12px',
+                              borderRadius: '6px',
+                              backgroundColor: 'rgba(152, 216, 170, 0.1)',
+                              transition: 'all 0.2s ease-in-out',
+                              display: 'inline-block',
+                              '&:hover': {
+                                backgroundColor: '#98D8AA',
+                                color: 'black',
+                                transform: 'translateY(-1px)',
+                                boxShadow: '0 2px 8px rgba(152, 216, 170, 0.3)'
+                              }
+                            }}
+                          >
+                            link
+                          </Link>
+                        ) : (
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                          <Schedule sx={{ fontSize: '0.875rem', color: 'text.disabled' }} />
+                          <Typography sx={{ color: 'text.disabled', fontSize: '0.875rem' }}>
+                            Coming Soon
+                          </Typography>
+                        </Box>
+                        )}
                       </TableCell>
                       <TableCell>
                         {getStatusChip(item.status)}
