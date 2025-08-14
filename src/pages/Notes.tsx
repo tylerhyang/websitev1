@@ -26,7 +26,7 @@ const Notes: FC = () => {
       course: 'CS 7646 - Machine Learning for Trading',
       university: GEORGIA_TECH,
       url: '',
-      status: 'scheduled'
+      status: 'in-progress'
     }
   ];
 
