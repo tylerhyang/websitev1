@@ -165,16 +165,16 @@ const Notes: FC = () => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ fontWeight: 600, fontSize: '1rem' }}>
+                  <TableCell sx={{ fontWeight: 600, fontSize: '1rem', textAlign: 'center' }}>
                     Course
                   </TableCell>
-                  <TableCell sx={{ fontWeight: 600, fontSize: '1rem' }}>
+                  <TableCell sx={{ fontWeight: 600, fontSize: '1rem', textAlign: 'center' }}>
                     University
                   </TableCell>
-                  <TableCell sx={{ fontWeight: 600, fontSize: '1rem' }}>
+                  <TableCell sx={{ fontWeight: 600, fontSize: '1rem', textAlign: 'center' }}>
                     Notes
                   </TableCell>
-                  <TableCell sx={{ fontWeight: 600, fontSize: '1rem' }}>
+                  <TableCell sx={{ fontWeight: 600, fontSize: '1rem', textAlign: 'center' }}>
                     Status
                   </TableCell>
                 </TableRow>
@@ -193,10 +193,10 @@ const Notes: FC = () => {
                       <TableCell sx={{ fontWeight: 500 }}>
                         {item.course}
                       </TableCell>
-                      <TableCell>
+                      <TableCell sx={{ textAlign: 'center' }}>
                         {item.university}
                       </TableCell>
-                      <TableCell>
+                      <TableCell sx={{ textAlign: 'center' }}>
                         {item.url ? (
                           <Link 
                             href={item.url} 
@@ -223,7 +223,7 @@ const Notes: FC = () => {
                             link
                           </Link>
                         ) : (
-                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, justifyContent: 'center' }}>
                           <Schedule sx={{ fontSize: '0.875rem', color: 'text.disabled' }} />
                           <Typography sx={{ color: 'text.disabled', fontSize: '0.875rem' }}>
                             Coming Soon
@@ -231,7 +231,7 @@ const Notes: FC = () => {
                         </Box>
                         )}
                       </TableCell>
-                      <TableCell>
+                      <TableCell sx={{ textAlign: 'center' }}>
                         {getStatusChip(item.status)}
                       </TableCell>
                     </TableRow>
