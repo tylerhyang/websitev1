@@ -106,6 +106,47 @@ const Notes: FC = () => {
     }
   };
 
+  const getUniversityChip = (university: string) => {
+    switch (university) {
+      case UC_BERKELEY:
+        return (
+          <Chip 
+            label={university} 
+            size="small" 
+            sx={{ 
+              backgroundColor: '#002676',
+              color: '#FFFFFF',
+              fontWeight: 500
+            }} 
+          />
+        );
+      case GEORGIA_TECH:
+        return (
+          <Chip 
+            label={university} 
+            size="small" 
+            sx={{ 
+              backgroundColor: '#B3A369',
+              color: '#FFFFFF',
+              fontWeight: 500
+            }} 
+          />
+        );
+      default:
+        return (
+          <Chip 
+            label={university} 
+            size="small" 
+            sx={{ 
+              backgroundColor: '#E0E0E0',
+              color: '#2C3E50',
+              fontWeight: 500,
+            }} 
+          />
+        );
+    }
+  };
+
   return (
     <Container sx={{width: "60vw"}}>
     <Box sx={{ 
@@ -194,7 +235,7 @@ const Notes: FC = () => {
                         {item.course}
                       </TableCell>
                       <TableCell sx={{ textAlign: 'center' }}>
-                        {item.university}
+                        {getUniversityChip(item.university)}
                       </TableCell>
                       <TableCell sx={{ textAlign: 'center' }}>
                         {item.url ? (
