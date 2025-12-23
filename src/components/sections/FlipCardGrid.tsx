@@ -89,6 +89,7 @@ const FlipCardGrid: FC<FlipCardGridProps> = ({ images }) => {
       width: '100%',
       pb: 2,
       position: 'relative',
+      overflow: 'visible', // Allow overflow during flip animation
     }}>
       <Box sx={{
         display: 'flex',
@@ -97,6 +98,8 @@ const FlipCardGrid: FC<FlipCardGridProps> = ({ images }) => {
         justifyContent: 'center',
         width: 'fit-content',
         margin: '0 auto',
+        padding: '20px', // Add padding to accommodate rotated cards and flip animation
+        overflow: 'visible', // Allow overflow during flip
         '& > *': {
           position: 'relative',
           zIndex: 1,
@@ -116,18 +119,29 @@ const FlipCardGrid: FC<FlipCardGridProps> = ({ images }) => {
               '&:hover': {
                 transform: `rotate(0deg) translateX(0)`,
               },
-              overflow: 'hidden',
+              overflow: 'visible', // Allow overflow during flip animation
               animation: `${createFloatUpAnimation(index)} 1s ease-out ${index * 0.2}s forwards`,
               opacity: 0,
             }}
           >
-            <ReactCardFlip
-              isFlipped={flippedCards[index]}
-              flipDirection="horizontal"
-              flipSpeedBackToFront={0.6}
-              flipSpeedFrontToBack={0.6}
-              containerStyle={{ width: '100%', height: '100%' }}
-            >
+            <Box sx={{
+              width: '100%',
+              height: '100%',
+              overflow: 'visible', // Remove clipping during flip
+              position: 'relative',
+            }}>
+              <ReactCardFlip
+                isFlipped={flippedCards[index]}
+                flipDirection="horizontal"
+                flipSpeedBackToFront={0.6}
+                flipSpeedFrontToBack={0.6}
+                containerStyle={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  overflow: 'visible', // Allow overflow during 3D flip
+                  position: 'relative',
+                }}
+              >
               {/* Front of card */}
               <Box
                 onMouseEnter={() => handleCardHover(index, true)}
@@ -216,6 +230,7 @@ const FlipCardGrid: FC<FlipCardGridProps> = ({ images }) => {
                 )}
               </Box>
             </ReactCardFlip>
+            </Box>
           </Box>
         ))}
       </Box>

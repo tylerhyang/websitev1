@@ -23,10 +23,10 @@ const Notes: FC = () => {
       status: 'completed'
     },
     {
-      course: 'CS 7646 - Machine Learning for Trading',
-      university: GEORGIA_TECH,
+      course: 'CS 188 - Artificial Intelligence',
+      university: UC_BERKELEY,
       url: '',
-      status: 'in-progress'
+      status: 'completed'
     }
   ];
 

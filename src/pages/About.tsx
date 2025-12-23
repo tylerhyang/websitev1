@@ -74,6 +74,7 @@ const About: FC = () => {
       { name: 'Prometheus', icon: 'devicon-prometheus-original' },
       { name: 'Redis', icon: 'devicon-redis-plain' },
       { name: 'Swagger', icon: 'devicon-swagger-plain' },
+      { name: 'Terraform', icon: 'devicon-terraform-plain'},
     ],
   };
 
@@ -90,7 +91,7 @@ const About: FC = () => {
       company: 'Glean',
       companyUrl: 'https://www.glean.com',
       title: 'Software Engineer - Data Foundations',
-      description: 'Data connectors and infrastructure for search'
+      description: 'Enterprise connectors and infrastructure for search'
     },
     {
       year: '2023 - 2025',
