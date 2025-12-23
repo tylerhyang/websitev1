@@ -1,6 +1,7 @@
 import { Box, Avatar, Typography, IconButton, Stack, Paper} from '@mui/material';
 import { GitHub, LinkedIn, Email } from '@mui/icons-material';
 import TypingText from '../components/sections/TypingText';
+import SpotifySection from '../components/sections/SpotifySection';
 import { floatUp } from '../components/ui/Animations';
 import type { FC } from 'react';
 import headshotImage from '/assets/headshot.jpg';
@@ -52,12 +53,14 @@ const Home: FC = () => {
               </Typography>
               <Typography variant="body1" paragraph>
                 Currently I am focused on backend and infrastructure development for AI workloads.
-                I am passionate about ethical AI, agentic workflows, and algorithms.
+                I am passionate about ethical AI, agentic workflows, and algorithms.  During my free time, I enjoy making music and making pottery.
               </Typography>
             </Box>
           </Stack>
         </Paper>
 
+        {/* Spotify Section */}
+        <SpotifySection />
         {/* Social Links Section */}
         <Paper
           elevation={3}
