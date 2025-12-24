@@ -86,6 +86,7 @@ const Projects: FC = () => {
                   key={project.name}
                   elevation={2}
                   sx={{
+                    borderRadius: '12px',
                     '&:hover': {
                       boxShadow: 4,
                       transform: 'translateY(-2px)',
@@ -161,6 +162,7 @@ const Projects: FC = () => {
                   key={project.name}
                   elevation={2}
                   sx={{
+                    borderRadius: '12px',
                     '&:hover': {
                       boxShadow: 4,
                       transform: 'translateY(-2px)',
