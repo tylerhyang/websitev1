@@ -1,0 +1,30 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/api/spotify/recently-played"
+  to = "/.netlify/functions/spotify-recently-played"
+  status = 200
+
+[[redirects]]
+  from = "/api/spotify/top-tracks"
+  to = "/.netlify/functions/spotify-top-tracks"
+  status = 200
+
+[[redirects]]
+  from = "/api/spotify/callback"
+  to = "/.netlify/functions/spotify-callback"
+  status = 200
+
+[[redirects]]
+  from = "/api/spotify/player-token"
+  to = "/.netlify/functions/spotify-player-token"
+  status = 200
+
+# Fallback for any other spotify API routes
+[[redirects]]
+  from = "/api/spotify/*"
+  to = "/.netlify/functions/spotify-:splat"
+  status = 200
+
