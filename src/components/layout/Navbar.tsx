@@ -34,7 +34,7 @@ const Navbar: FC = () => {
                   color: 'inherit',
                   backgroundColor: 'transparent'
                 },
-                boxShadow: isActive('/') ? '0 0 10px rgba(0, 0, 0, 0.2)' : 'none',
+                boxShadow: isActive('/') ? (isDarkMode ? '0 0 10px rgba(255, 255, 255, 0.2)' : '0 0 10px rgba(0, 0, 0, 0.2)') : 'none',
                 borderRadius: '8px',
                 padding: '6px 16px'
               }}
@@ -51,7 +51,7 @@ const Navbar: FC = () => {
                   color: 'inherit',
                   backgroundColor: 'transparent'
                 },
-                boxShadow: isActive('/about') ? '0 0 10px rgba(0, 0, 0, 0.2)' : 'none',
+                boxShadow: isActive('/about') ? (isDarkMode ? '0 0 10px rgba(255, 255, 255, 0.2)' : '0 0 10px rgba(0, 0, 0, 0.2)') : 'none',
                 borderRadius: '8px',
                 padding: '6px 16px'
               }}
@@ -68,7 +68,7 @@ const Navbar: FC = () => {
                   color: 'inherit',
                   backgroundColor: 'transparent'
                 },
-                boxShadow: isActive('/projects') ? '0 0 10px rgba(0, 0, 0, 0.2)' : 'none',
+                boxShadow: isActive('/projects') ? (isDarkMode ? '0 0 10px rgba(255, 255, 255, 0.2)' : '0 0 10px rgba(0, 0, 0, 0.2)') : 'none',
                 borderRadius: '8px',
                 padding: '6px 16px'
               }}
@@ -85,7 +85,7 @@ const Navbar: FC = () => {
                   color: 'inherit',
                   backgroundColor: 'transparent'
                 },
-                boxShadow: isActive('/notes') ? '0 0 10px rgba(0, 0, 0, 0.2)' : 'none',
+                boxShadow: isActive('/notes') ? (isDarkMode ? '0 0 10px rgba(255, 255, 255, 0.2)' : '0 0 10px rgba(0, 0, 0, 0.2)') : 'none',
                 borderRadius: '8px',
                 padding: '6px 16px'
               }}

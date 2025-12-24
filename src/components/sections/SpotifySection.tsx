@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import { useEffect, useState, memo } from 'react';
 import { floatUp } from '../ui/Animations';
+import { useTheme as useCustomTheme } from '../../context/ThemeContext';
 import type { FC } from 'react';
 
 type Track = {
@@ -27,6 +28,7 @@ interface SpotifySectionProps {
 }
 
 const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
+  const { isDarkMode } = useCustomTheme();
   const [recentTracks, setRecentTracks] = useState<Track[]>([]);
   const [topTracks, setTopTracks] = useState<Track[]>([]);
   const [loading, setLoading] = useState(true);
@@ -213,11 +215,12 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
         backgroundColor: 'background.paper',
         animation: `${floatUp} 0.6s ease-out 0.6s forwards`,
         opacity: 0,
+        overflow: 'visible',
       }}
     >
       {/* Header with Tabs */}
-      <Box sx={{ mb: 1, padding: 1 }}>
-        <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
+      <Box sx={{ mb: 2, mt: 2, padding: '10px 16px', overflow: 'visible', position: 'relative' }}>
+        <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between" sx={{ overflow: 'visible', position: 'relative' }}>
           <Typography variant="h6" sx={{ fontWeight: 500, lineHeight: 1.2 }}>
             What i'm listening to
           </Typography>
@@ -229,24 +232,40 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
             }}
             sx={{
               minHeight: 'auto',
+              overflow: 'visible',
+              position: 'relative',
+              '& .MuiTabs-root': {
+                overflow: 'visible',
+              },
               '& .MuiTabs-indicator': {
                 display: 'none',
               },
               '& .MuiTabs-flexContainer': {
                 alignItems: 'center',
+                gap: 1,
+                overflow: 'visible',
+                position: 'relative',
+              },
+              '& .MuiTabs-scroller': {
+                overflow: 'visible !important',
               },
             }}
           >
             <Tab 
               label="Recently Played" 
               sx={{
+                overflow: 'visible',
                 textTransform: 'none',
                 padding: '6px 16px',
                 borderRadius: '8px',
                 minHeight: 'auto',
-                color: 'text.secondary',
+                color: 'text.primary',
+                position: 'relative',
+                zIndex: 1,
                 '&.Mui-selected': {
                   color: 'text.primary',
+                  boxShadow: isDarkMode ? '0 0 10px rgba(255, 255, 255, 0.2)' : '0 0 10px rgba(0, 0, 0, 0.2)',
+                  zIndex: 2,
                 },
                 '&:hover': {
                   color: 'text.primary',
@@ -278,9 +297,14 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
                 padding: '6px 16px',
                 borderRadius: '8px',
                 minHeight: 'auto',
-                color: 'text.secondary',
+                color: 'text.primary',
+                overflow: 'visible',
+                position: 'relative',
+                zIndex: 1,
                 '&.Mui-selected': {
                   color: 'text.primary',
+                  boxShadow: isDarkMode ? '0 0 10px rgba(255, 255, 255, 0.2)' : '0 0 10px rgba(0, 0, 0, 0.2)',
+                  zIndex: 2,
                 },
                 '&:hover': {
                   color: 'text.primary',
