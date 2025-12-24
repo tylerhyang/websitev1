@@ -105,14 +105,24 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
   // Featured track card (large card on left)
   const FeaturedTrackCard = memo(({ track, delay = 0 }: { track: Track; delay?: number }) => {
     return (
-      <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', padding: 0, margin: 0, lineHeight: 0, backgroundColor: 'background.paper', borderRadius: '12px', overflow: 'hidden' }}>
         <Box
           sx={{
             animation: `${floatUp} 0.6s ease-out ${delay}s forwards`,
-            opacity: 0,
+            width: '100%',
+            margin: 0,
+            padding: 0,
+            lineHeight: 0,
+            display: 'block',
+            overflow: 'hidden',
+            height: '351px', // Crop bottom by making container smaller than iframe
+            borderRadius: '12px',
             '& iframe': {
-              borderRadius: '12px',
               border: 'none',
+              margin: 0,
+              padding: 0,
+              display: 'block',
+              transform: 'translateY(0)',
             }
           }}
         >
@@ -125,6 +135,9 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
             style={{
               borderRadius: '12px',
               border: 'none',
+              margin: 0,
+              padding: 0,
+              display: 'block',
             }}
           />
         </Box>
@@ -142,7 +155,7 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
         component="div"
         sx={{ 
           width: '100%', 
-          margin: 0, 
+          marginBottom: '10px', 
           padding: 0, 
           lineHeight: 0, 
           display: 'block',
@@ -159,20 +172,14 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
         }}
       >
         <iframe
-          src={`https://open.spotify.com/embed/track/${track.id}?utm_source=generator&theme=1`}
+          src={`https://open.spotify.com/embed/track/${track.id}?theme=1`}
           width="100%"
-          height="100%"
-          frameBorder="0"
+          height="80px"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
           style={{
-            borderRadius: 0,
-            border: 'none',
-            margin: 0,
-            padding: 0,
-            display: 'block',
-            verticalAlign: 'top',
-            outline: 'none',
+            borderRadius: '14px',
+
           }}
         />
       </Box>
@@ -204,15 +211,13 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
         maxWidth: '800px',
         borderRadius: 4,
         backgroundColor: 'background.paper',
-        border: '1px solid',
-        borderColor: 'divider',
         animation: `${floatUp} 0.6s ease-out 0.6s forwards`,
         opacity: 0,
       }}
     >
       {/* Header with Tabs */}
-      <Box sx={{ mb: 3 }}>
-        <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between" sx={{ mb: 2 }}>
+      <Box sx={{ mb: 1, padding: 1 }}>
+        <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
           <Typography variant="h6" sx={{ fontWeight: 500, lineHeight: 1.2 }}>
             What i'm listening to
           </Typography>
@@ -306,7 +311,7 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
       </Box>
 
       {/* Content */}
-      <Box key={tabKey}>
+      <Box key={tabKey} sx={{ padding: 1 }}>
         {activeTab === 0 && (
           <>
             {recentError ? (
@@ -318,7 +323,7 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
                 No recently played tracks. Play some music on Spotify to see your recent activity here!
               </Typography>
             ) : (
-              <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} sx={{ width: '100%', alignItems: 'stretch' }}>
+              <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} sx={{ width: '100%', alignItems: 'stretch', padding: 1 }}>
                 {/* Featured Track (Left) */}
                 <Box 
                   sx={{ 
@@ -326,6 +331,7 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
                     minWidth: 0, 
                     display: 'flex',
                     flexDirection: 'column',
+                    padding: 1,
                   }}
                 >
                   <FeaturedTrackCard track={recentTracks[0]} delay={0} />
@@ -338,7 +344,7 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
                     flex: { xs: '1 1 100%', md: '1 1 0' }, 
                     minWidth: 0,
                     margin: 0,
-                    padding: 0,
+                    padding: 1,
                     gap: 0,
                     alignItems: 'flex-start',
                     '& > *': {
@@ -347,9 +353,7 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
                       marginTop: '0 !important',
                       marginBottom: '0 !important',
                     },
-                    '& > *:not(:last-child)': {
-                      marginBottom: '-20px !important',
-                    }
+
                   }}
                 >
                   {recentTracks.slice(1, 5).map((track, index) => (
@@ -361,10 +365,9 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
                         padding: '0 !important',
                         lineHeight: 0,
                         display: 'block',
+                        borderRadius: '20px',
                         fontSize: 0,
-                        '& iframe': {
-                          marginBottom: '-40px !important',
-                        }
+
                       }}
                     >
                       <SmallTrackCard track={track} delay={0.2 + (index * 0.15)} />
@@ -387,7 +390,7 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
                 No top tracks data available. Spotify needs more listening history to generate top tracks.
               </Typography>
             ) : (
-              <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} sx={{ width: '100%', alignItems: 'stretch' }}>
+              <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} sx={{ width: '100%', alignItems: 'stretch', padding: 1 }}>
                 {/* Featured Track (Left) */}
                 <Box 
                   sx={{ 
@@ -395,6 +398,7 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
                     minWidth: 0, 
                     display: 'flex',
                     flexDirection: 'column',
+                    padding: 1,
                   }}
                 >
                   <FeaturedTrackCard track={topTracks[0]} delay={0} />
@@ -407,7 +411,7 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
                     flex: { xs: '1 1 100%', md: '1 1 0' }, 
                     minWidth: 0,
                     margin: 0,
-                    padding: 0,
+                    padding: 1,
                     gap: 0,
                     alignItems: 'flex-start',
                     '& > *': {
@@ -416,9 +420,7 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
                       marginTop: '0 !important',
                       marginBottom: '0 !important',
                     },
-                    '& > *:not(:last-child)': {
-                      marginBottom: '-20px !important',
-                    }
+
                   }}
                 >
                   {topTracks.slice(1, 5).map((track, index) => (
@@ -430,10 +432,9 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
                         padding: '0 !important',
                         lineHeight: 0,
                         display: 'block',
+                        borderRadius: '20px',
                         fontSize: 0,
-                        '& iframe': {
-                          marginBottom: '-40px !important',
-                        }
+
                       }}
                     >
                       <SmallTrackCard track={track} delay={0.2 + (index * 0.15)} />
