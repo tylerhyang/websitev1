@@ -1,8 +1,5 @@
 import { Handler } from '@netlify/functions';
-
-const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID!;
-const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET!;
-const SPOTIFY_REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN!;
+import { getCachedAccessToken } from './spotify-token-cache';
 
 interface SpotifyTrack {
   id: string;
@@ -30,30 +27,6 @@ interface TransformedTrack {
   previewUrl?: string; // Preview URL for playback
 }
 
-/**
- * Get a new access token using the refresh token
- */
-async function getAccessToken(): Promise<string> {
-  const response = await fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: `Basic ${Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString('base64')}`,
-    },
-    body: new URLSearchParams({
-      grant_type: 'refresh_token',
-      refresh_token: SPOTIFY_REFRESH_TOKEN,
-    }),
-  });
-
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(`Failed to get access token: ${error.error_description || error.error}`);
-  }
-
-  const data = await response.json();
-  return data.access_token;
-}
 
 /**
  * Transform Spotify track object to our frontend format
@@ -97,7 +70,7 @@ export const handler: Handler = async (event, context) => {
   }
 
   try {
-    const accessToken = await getAccessToken();
+    const accessToken = await getCachedAccessToken();
     const timeRange = event.queryStringParameters?.time_range || 'short_term';
     
     const response = await fetch(

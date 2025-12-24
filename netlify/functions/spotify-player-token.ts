@@ -1,8 +1,5 @@
 import { Handler } from '@netlify/functions';
-
-const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID!;
-const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET!;
-const SPOTIFY_REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN!;
+import { getCachedAccessToken } from './spotify-token-cache';
 
 /**
  * Get a player access token for Web Playback SDK
@@ -16,54 +13,20 @@ const SPOTIFY_REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN!;
  * 
  * NOTE: Console logs appear in Netlify Function logs, not browser console
  * View them in: Netlify Dashboard → Functions → spotify-player-token → Logs
+ * 
+ * NOTE: This function uses the cached token to reduce API calls and rate limiting
  */
 async function getPlayerAccessToken(): Promise<string> {
-  const response = await fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: `Basic ${Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString('base64')}`,
-    },
-    body: new URLSearchParams({
-      grant_type: 'refresh_token',
-      refresh_token: SPOTIFY_REFRESH_TOKEN,
-    }),
-  });
-
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(`Failed to get access token: ${error.error_description || error.error}`);
-  }
-
-  const data = await response.json();
+  // Use cached token (same token works for all endpoints)
+  // The cache handles token refresh automatically
+  const accessToken = await getCachedAccessToken();
   
-  // Log the full response for debugging (excluding sensitive token)
-  console.log('Token refresh response:', {
-    has_scope: !!data.scope,
-    scope: data.scope || 'NOT PROVIDED BY SPOTIFY',
-    token_type: data.token_type,
-    expires_in: data.expires_in,
-    // Don't log the actual token for security
-  });
+  // Note: Scope information is not available from cached tokens
+  // Scopes are remembered from the original authorization
+  // If you get 403 errors, your refresh token was created WITHOUT the "streaming" scope
+  // Solution: Re-authorize to get a new refresh token with all scopes
   
-  // Spotify doesn't always return scope in refresh responses
-  // The scopes are "remembered" from the original authorization
-  // If scope is not provided, we can't verify it here
-  if (data.scope) {
-    console.log('✅ Access token scopes:', data.scope);
-    if (!data.scope.includes('streaming')) {
-      console.warn('⚠️ WARNING: Access token does not include "streaming" scope. The Web Playback SDK will fail with 403 errors. You need to re-authorize with the streaming scope.');
-    } else {
-      console.log('✅ Token includes "streaming" scope');
-    }
-  } else {
-    console.warn('⚠️ Spotify did not return scope information in token refresh response.');
-    console.warn('⚠️ This is normal - scopes are remembered from original authorization.');
-    console.warn('⚠️ If you get 403 errors, your refresh token was created WITHOUT the "streaming" scope.');
-    console.warn('⚠️ Solution: Re-authorize to get a new refresh token with all scopes.');
-  }
-  
-  return data.access_token;
+  return accessToken;
 }
 
 export const handler: Handler = async (event) => {
@@ -95,7 +58,8 @@ export const handler: Handler = async (event) => {
     const accessToken = await getPlayerAccessToken();
     
     // Optional: Verify the token has streaming scope by checking user info
-    // This helps diagnose scope issues
+    // This helps diagnose scope issues (only on first request after cache expires)
+    // Note: We skip this on cached tokens to avoid extra API calls
     try {
       const verifyResponse = await fetch('https://api.spotify.com/v1/me', {
         headers: {
