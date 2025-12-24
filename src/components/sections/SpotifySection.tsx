@@ -107,42 +107,41 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
   // Featured track card (large card on left)
   const FeaturedTrackCard = memo(({ track, delay = 0 }: { track: Track; delay?: number }) => {
     return (
-      <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', padding: 0, margin: 0, lineHeight: 0, backgroundColor: 'background.paper', borderRadius: '12px', overflow: 'hidden' }}>
-        <Box
-          sx={{
-            animation: `${floatUp} 0.6s ease-out ${delay}s forwards`,
-            width: '100%',
+      <Box 
+        sx={{ 
+          width: '100%', 
+          display: 'block',
+          padding: 0, 
+          margin: 0, 
+          lineHeight: 0, 
+          borderRadius: '12px', 
+          overflow: 'hidden',
+          animation: `${floatUp} 0.6s ease-out ${delay}s forwards`,
+          opacity: 0,
+          height: '351px', // Crop bottom by making container smaller than iframe
+          '& iframe': {
+            border: 'none',
             margin: 0,
             padding: 0,
-            lineHeight: 0,
             display: 'block',
-            overflow: 'hidden',
-            height: '351px', // Crop bottom by making container smaller than iframe
+            transform: 'translateY(0)',
+          }
+        }}
+      >
+        <iframe
+          src={`https://open.spotify.com/embed/track/${track.id}?theme=1`}
+          width="100%"
+          height="400"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          style={{
             borderRadius: '12px',
-            '& iframe': {
-              border: 'none',
-              margin: 0,
-              padding: 0,
-              display: 'block',
-              transform: 'translateY(0)',
-            }
+            border: 'none',
+            margin: 0,
+            padding: 0,
+            display: 'block',
           }}
-        >
-          <iframe
-            src={`https://open.spotify.com/embed/track/${track.id}?theme=1`}
-            width="100%"
-            height="400"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-            style={{
-              borderRadius: '12px',
-              border: 'none',
-              margin: 0,
-              padding: 0,
-              display: 'block',
-            }}
-          />
-        </Box>
+        />
       </Box>
     );
   }, (prevProps, nextProps) => {
