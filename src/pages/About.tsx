@@ -91,7 +91,7 @@ const About: FC = () => {
       company: 'Glean',
       companyUrl: 'https://www.glean.com',
       title: 'Software Engineer - Data Foundations',
-      description: 'Enterprise connectors and infrastructure for search'
+      description: 'Data connectors and infrastructure for search'
     },
     {
       year: '2023 - 2025',
@@ -169,7 +169,7 @@ const About: FC = () => {
           </Box>
           <Stack spacing={3}>
             {Object.entries(technologies).map(([category, items]) => (
-              <Paper elevation={3} sx={{ p: 4 }}>
+              <Paper elevation={3} sx={{ p: 4 , borderRadius: '12px'}}>
                 <Box 
                   key={category}
                   sx={{
