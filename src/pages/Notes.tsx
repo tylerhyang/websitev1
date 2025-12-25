@@ -12,7 +12,7 @@ type NoteItem = {
 const Notes: FC = () => {
   const UC_BERKELEY = 'UC Berkeley';
   const GEORGIA_TECH = 'Georgia Tech';
-  const COURSERA = 'Coursera';
+  const RICE_UNIVERSITY = 'Rice University';
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSource, setSelectedSource] = useState<string>('all');
   const notesData: NoteItem[] = [
@@ -27,8 +27,13 @@ const Notes: FC = () => {
       url: ''
     },
     {
+      course: 'Computer Security',
+      source: UC_BERKELEY,
+      url: ''
+    },
+    {
       course: 'Parallel, Concurrent, and Distributed Programming',
-      source: COURSERA,
+      source: RICE_UNIVERSITY,
       url: ''
     }
   ];
@@ -73,7 +78,7 @@ const Notes: FC = () => {
             }} 
           />
         );
-      case COURSERA:
+      case RICE_UNIVERSITY:
         return (
           <Chip 
             label={source} 

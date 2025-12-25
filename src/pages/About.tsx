@@ -91,14 +91,14 @@ const About: FC = () => {
       company: 'Glean',
       companyUrl: 'https://www.glean.com',
       title: 'Software Engineer - Data Foundations',
-      description: 'Data connectors and infrastructure for search'
+      description: 'Infrastructure for enterprise data connectors'
     },
     {
       year: '2023 - 2025',
       company: 'Cloudera',
       companyUrl: 'https://www.cloudera.com',
       title: 'Software Engineer II - Gen AI/ML',
-      description: 'Model serving infrastructure on KServe'
+      description: 'Model serving infrastructure on kubernetes'
     },
     {
       year: '2019 -2023',
@@ -112,14 +112,14 @@ const About: FC = () => {
       company: 'Cloudera',
       companyUrl: 'https://www.cloudera.com',
       title: 'Software Engineer Intern - Machine Learning',
-      description: 'Kubernetes operators for AI Workloads'
+      description: 'Kubernetes operators for AI workload management'
     },
     {
       year: '2021 - 2021',
       company: 'University of California, Berkeley',
       companyUrl: 'https://www.berkeley.edu',
       title: 'Undergraduate Researcher',
-      description: 'Pipeline load balancing and graph search heuristics'
+      description: 'Graph search heuristics for pipeline optimization'
     },
   ];
 
