@@ -6,112 +6,58 @@ import type { FC } from 'react';
 
 type NoteItem = {
   course: string;
-  university: string;
+  source: string;
   url: string;
-  status: 'completed' | 'in-progress' | 'scheduled';
 };
 const Notes: FC = () => {
   const UC_BERKELEY = 'UC Berkeley';
   const GEORGIA_TECH = 'Georgia Tech';
+  const RICE_UNIVERSITY = 'Rice University';
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedUniversity, setSelectedUniversity] = useState<string>('all');
+  const [selectedSource, setSelectedSource] = useState<string>('all');
   const notesData: NoteItem[] = [
     {
-      course: 'CS 169 - Software Engineering',
-      university: UC_BERKELEY,
-      url: 'https://docs.google.com/document/d/1LDNRce6HYgEslVF_gqo1N_sUpB-YgPz6T5XC_LgIp2w/edit?tab=t.0#heading=h.1o8ul35vkldf',
-      status: 'completed'
+      course: 'Software Engineering',
+      source: UC_BERKELEY,
+      url: 'https://docs.google.com/document/d/1LDNRce6HYgEslVF_gqo1N_sUpB-YgPz6T5XC_LgIp2w/edit?tab=t.0#heading=h.1o8ul35vkldf'
     },
     {
-      course: 'CS 188 - Artificial Intelligence',
-      university: UC_BERKELEY,
-      url: '',
-      status: 'completed'
+      course: 'Artificial Intelligence',
+      source: UC_BERKELEY,
+      url: ''
+    },
+    {
+      course: 'Computer Security',
+      source: UC_BERKELEY,
+      url: ''
+    },
+    {
+      course: 'Parallel, Concurrent, and Distributed Programming',
+      source: RICE_UNIVERSITY,
+      url: ''
     }
   ];
 
-  const universities = useMemo(() => {
-    const uniqueUniversities = [...new Set(notesData.map(item => item.university))];
-    return ['all', ...uniqueUniversities];
+  const sources = useMemo(() => {
+    const uniqueSources = [...new Set(notesData.map(item => item.source))];
+    return ['all', ...uniqueSources];
   }, []);
 
   // Filter and search logic
   const filteredNotes = useMemo(() => {
     return notesData.filter(item => {
       const matchesSearch = item.course.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesUniversity = selectedUniversity === 'all' || item.university === selectedUniversity;
-      return matchesSearch && matchesUniversity;
+      const matchesSource = selectedSource === 'all' || item.source === selectedSource;
+      return matchesSearch && matchesSource;
     });
-  }, [searchTerm, selectedUniversity]);
+  }, [searchTerm, selectedSource]);
 
-  const getStatusChip = (status: string) => {
-    switch (status) {
-      case 'completed':
-        return (
-          <Chip 
-            label="Completed" 
-            size="small" 
-            sx={{ 
-              backgroundColor: '#98D8AA',
-              color: '#2C3E50',
-              fontWeight: 500,
-              '&:hover': {
-                backgroundColor: '#B4E4C7',
-              }
-            }} 
-          />
-        );
-      case 'in-progress':
-        return (
-          <Chip 
-            label="In Progress" 
-            size="small" 
-            sx={{ 
-              backgroundColor: '#A8D8EA',
-              color: '#2C3E50',
-              fontWeight: 500,
-              '&:hover': {
-                backgroundColor: '#B8E0F0',
-              }
-            }} 
-          />
-        );
-      case 'scheduled':
-        return (
-          <Chip 
-            label="Scheduled" 
-            size="small" 
-            sx={{ 
-              backgroundColor: '#D4B5FF',
-              color: '#2C3E50',
-              fontWeight: 500,
-              '&:hover': {
-                backgroundColor: '#E0C4FF',
-              }
-            }} 
-          />
-        );
-      default:
-        return (
-          <Chip 
-            label="Unknown" 
-            size="small" 
-            sx={{ 
-              backgroundColor: '#E0E0E0',
-              color: '#2C3E50',
-              fontWeight: 500,
-            }} 
-          />
-        );
-    }
-  };
-
-  const getUniversityChip = (university: string) => {
-    switch (university) {
+  const getSourceChip = (source: string) => {
+    switch (source) {
       case UC_BERKELEY:
         return (
           <Chip 
-            label={university} 
+            label={source} 
             size="small" 
             sx={{ 
               backgroundColor: '#002676',
@@ -123,7 +69,7 @@ const Notes: FC = () => {
       case GEORGIA_TECH:
         return (
           <Chip 
-            label={university} 
+            label={source} 
             size="small" 
             sx={{ 
               backgroundColor: '#B3A369',
@@ -132,10 +78,22 @@ const Notes: FC = () => {
             }} 
           />
         );
+      case RICE_UNIVERSITY:
+        return (
+          <Chip 
+            label={source} 
+            size="small" 
+            sx={{ 
+              backgroundColor: '#0056D2',
+              color: '#FFFFFF',
+              fontWeight: 500
+            }} 
+          />
+        );
       default:
         return (
           <Chip 
-            label={university} 
+            label={source} 
             size="small" 
             sx={{ 
               backgroundColor: '#E0E0E0',
@@ -163,7 +121,7 @@ const Notes: FC = () => {
             Notes
           </Typography>
           <Typography sx={{ fontWeight: 700 }} color="text.secondary" gutterBottom>
-            Course notes and materials
+            Notes and learning materials
           </Typography>
         </Box>
         <Box sx={{ 
@@ -181,15 +139,15 @@ const Notes: FC = () => {
                 placeholder="e.g., Machine Learning, CS 7641"
               />
               <FormControl size="small" sx={{ minWidth: 200 }}>
-                <InputLabel>University</InputLabel>
+                <InputLabel>Source</InputLabel>
                 <Select
-                  value={selectedUniversity}
-                  label="University"
-                  onChange={(e) => setSelectedUniversity(e.target.value)}
+                  value={selectedSource}
+                  label="Source"
+                  onChange={(e) => setSelectedSource(e.target.value)}
                 >
-                  {universities.map((university) => (
-                    <MenuItem key={university} value={university}>
-                      {university === 'all' ? 'All Universities' : university}
+                  {sources.map((source) => (
+                    <MenuItem key={source} value={source}>
+                      {source === 'all' ? 'All Sources' : source}
                     </MenuItem>
                   ))}
                 </Select>
@@ -210,13 +168,10 @@ const Notes: FC = () => {
                     Course
                   </TableCell>
                   <TableCell sx={{ fontWeight: 600, fontSize: '1rem', textAlign: 'center' }}>
-                    University
+                    Source
                   </TableCell>
                   <TableCell sx={{ fontWeight: 600, fontSize: '1rem', textAlign: 'center' }}>
                     Notes
-                  </TableCell>
-                  <TableCell sx={{ fontWeight: 600, fontSize: '1rem', textAlign: 'center' }}>
-                    Status
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -235,7 +190,7 @@ const Notes: FC = () => {
                         {item.course}
                       </TableCell>
                       <TableCell sx={{ textAlign: 'center' }}>
-                        {getUniversityChip(item.university)}
+                        {getSourceChip(item.source)}
                       </TableCell>
                       <TableCell sx={{ textAlign: 'center' }}>
                         {item.url ? (
@@ -271,9 +226,6 @@ const Notes: FC = () => {
                           </Typography>
                         </Box>
                         )}
-                      </TableCell>
-                      <TableCell sx={{ textAlign: 'center' }}>
-                        {getStatusChip(item.status)}
                       </TableCell>
                     </TableRow>
                   ))}
