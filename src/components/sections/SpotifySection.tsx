@@ -27,6 +27,92 @@ interface SpotifySectionProps {
   apiBaseUrl?: string; // Backend API base URL
 }
 
+// Featured track card (large card on left)
+const FeaturedTrackCard = memo(({ track, delay = 0 }: { track: Track; delay?: number }) => {
+  return (
+    <Box 
+      sx={{ 
+        width: '100%', 
+        display: 'block',
+        padding: 0, 
+        margin: 0, 
+        lineHeight: 0, 
+        borderRadius: '12px', 
+        overflow: 'hidden',
+        animation: `${floatUp} 0.6s ease-out ${delay}s forwards`,
+        opacity: 0,
+        height: '351px', // Crop bottom by making container smaller than iframe
+        '& iframe': {
+          border: 'none',
+          margin: 0,
+          padding: 0,
+          display: 'block',
+          transform: 'translateY(0)',
+        }
+      }}
+    >
+      <iframe
+        src={`https://open.spotify.com/embed/track/${track.id}?theme=1`}
+        width="100%"
+        height="400"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        style={{
+          borderRadius: '12px',
+          border: 'none',
+          margin: 0,
+          padding: 0,
+          display: 'block',
+        }}
+      />
+    </Box>
+  );
+}, (prevProps, nextProps) => {
+  // Only re-render if the track ID changes    
+  return prevProps.track.id === nextProps.track.id;
+});
+
+// Small track card (for list on right)
+const SmallTrackCard = memo(({ track, delay = 0 }: { track: Track; delay?: number }) => {
+  return (
+    <Box 
+      component="div"
+      sx={{ 
+        width: '100%', 
+        marginBottom: '10px', 
+        padding: 0, 
+        lineHeight: 0, 
+        display: 'block',
+        fontSize: 0,
+        animation: `${floatUp} 0.6s ease-out ${delay}s forwards`,
+        opacity: 0,
+        '& iframe': {
+          margin: 0,
+          padding: 0,
+          display: 'block',
+          verticalAlign: 'top',
+          border: 'none',
+        }
+      }}
+    >
+      <iframe
+        src={`https://open.spotify.com/embed/track/${track.id}?theme=1`}
+        width="100%"
+        height="80px"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        style={{
+          borderRadius: '14px',
+
+        }}
+      />
+    </Box>
+  );
+}, (prevProps, nextProps) => {
+  // Only re-render if the track ID changes
+  return prevProps.track.id === nextProps.track.id;
+});
+
 const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
   const { isDarkMode } = useCustomTheme();
   const [recentTracks, setRecentTracks] = useState<Track[]>([]);
@@ -102,93 +188,6 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
 
     fetchSpotifyData();
   }, [apiBaseUrl]);
-
-
-  // Featured track card (large card on left)
-  const FeaturedTrackCard = memo(({ track, delay = 0 }: { track: Track; delay?: number }) => {
-    return (
-      <Box 
-        sx={{ 
-          width: '100%', 
-          display: 'block',
-          padding: 0, 
-          margin: 0, 
-          lineHeight: 0, 
-          borderRadius: '12px', 
-          overflow: 'hidden',
-          animation: `${floatUp} 0.6s ease-out ${delay}s forwards`,
-          opacity: 0,
-          height: '351px', // Crop bottom by making container smaller than iframe
-          '& iframe': {
-            border: 'none',
-            margin: 0,
-            padding: 0,
-            display: 'block',
-            transform: 'translateY(0)',
-          }
-        }}
-      >
-        <iframe
-          src={`https://open.spotify.com/embed/track/${track.id}?theme=1`}
-          width="100%"
-          height="400"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          style={{
-            borderRadius: '12px',
-            border: 'none',
-            margin: 0,
-            padding: 0,
-            display: 'block',
-          }}
-        />
-      </Box>
-    );
-  }, (prevProps, nextProps) => {
-    // Only re-render if the track ID changes    
-    return prevProps.track.id === nextProps.track.id;
-  });
-
-  // Small track card (for list on right)
-  const SmallTrackCard = memo(({ track, delay = 0 }: { track: Track; delay?: number }) => {
-    return (
-      <Box 
-        component="div"
-        sx={{ 
-          width: '100%', 
-          marginBottom: '10px', 
-          padding: 0, 
-          lineHeight: 0, 
-          display: 'block',
-          fontSize: 0,
-          animation: `${floatUp} 0.6s ease-out ${delay}s forwards`,
-          opacity: 0,
-          '& iframe': {
-            margin: 0,
-            padding: 0,
-            display: 'block',
-            verticalAlign: 'top',
-            border: 'none',
-          }
-        }}
-      >
-        <iframe
-          src={`https://open.spotify.com/embed/track/${track.id}?theme=1`}
-          width="100%"
-          height="80px"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          style={{
-            borderRadius: '14px',
-
-          }}
-        />
-      </Box>
-    );
-  }, (prevProps, nextProps) => {
-    // Only re-render if the track ID changes
-    return prevProps.track.id === nextProps.track.id;
-  });
 
   if (loading) {
     return (
