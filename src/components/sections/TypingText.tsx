@@ -1,20 +1,25 @@
 import { Typography, Box } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { FC } from 'react';
 
 const TypingText: FC = () => {
   const [text, setText] = useState('');
   const fullText = "Hi, I'm Tyler";
   const [currentIndex, setCurrentIndex] = useState(0);
+  const timeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (currentIndex < fullText.length) {
-      const timeout = setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         setText(prev => prev + fullText[currentIndex]);
         setCurrentIndex(prev => prev + 1);
-      }, 100);
+      }, 70);
 
-      return () => clearTimeout(timeout);
+      return () => {
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
+      };
     }
   }, [currentIndex, fullText]);
 
@@ -25,14 +30,20 @@ const TypingText: FC = () => {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '200px',
+        position: 'relative',
       }}
     >
+      {/* Visible typing text */}
       <Typography
         variant="h2"
         component="h1"
         sx={{
-          fontWeight: 500,
+          fontWeight: 400,
           color: 'text.primary',
+          whiteSpace: 'nowrap',
+          willChange: 'contents',
+          backfaceVisibility: 'hidden',
+          transform: 'translateZ(0)',
           '&::after': {
             content: '""',
             display: 'inline-block',
