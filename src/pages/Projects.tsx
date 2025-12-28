@@ -87,6 +87,8 @@ const Projects: FC = () => {
                   elevation={2}
                   sx={{
                     borderRadius: '12px',
+                    border: '1px solid',
+                    borderColor: 'divider',
                     '&:hover': {
                       boxShadow: 4,
                       transform: 'translateY(-2px)',
@@ -163,6 +165,8 @@ const Projects: FC = () => {
                   elevation={2}
                   sx={{
                     borderRadius: '12px',
+                    border: '1px solid',
+                    borderColor: 'divider',
                     '&:hover': {
                       boxShadow: 4,
                       transform: 'translateY(-2px)',

@@ -169,7 +169,7 @@ const About: FC = () => {
           </Box>
           <Stack spacing={3}>
             {Object.entries(technologies).map(([category, items]) => (
-              <Paper elevation={3} sx={{ p: 4 , borderRadius: '12px'}}>
+              <Paper elevation={3} sx={{ p: 4 , borderRadius: '12px', border: '1px solid', borderColor: 'divider' }}>
                 <Box 
                   key={category}
                   sx={{

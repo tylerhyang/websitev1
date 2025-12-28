@@ -55,6 +55,8 @@ const Timeline: FC<TimelineProps> = ({ items }) => {
               backgroundColor: 'background.paper',
               transition: 'all 0.3s ease',
               borderRadius: '12px',
+              border: '1px solid',
+              borderColor: 'divider',
               '&:hover': {
                 transform: 'translateX(8px)',
                 boxShadow: 4,

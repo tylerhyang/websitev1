@@ -211,6 +211,8 @@ const SpotifySection: FC<SpotifySectionProps> = ({ apiBaseUrl = '/api' }) => {
         maxWidth: '800px',
         borderRadius: 4,
         backgroundColor: 'background.paper',
+        border: '1px solid',
+        borderColor: 'divider',
         animation: `${floatUp} 0.6s ease-out 0.6s forwards`,
         opacity: 0,
         overflow: 'visible',

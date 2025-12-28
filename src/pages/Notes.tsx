@@ -160,7 +160,7 @@ const Notes: FC = () => {
           animation: `${floatUp} 0.6s ease-out 0.4s forwards`,
           opacity: 0
         }}>
-          <TableContainer component={Paper} elevation={2} sx={{ borderRadius: '12px' }}>
+          <TableContainer component={Paper} elevation={2} sx={{ borderRadius: '12px', border: '1px solid', borderColor: 'divider' }}>
             <Table>
               <TableHead>
                 <TableRow>
